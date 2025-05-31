@@ -1,0 +1,12 @@
+sync_targets:
+- create_new_branch: false
+  force_sync: false
+  github_repo: user/repo
+  github_token: ghp_xxx...
+  local_dominance: false
+  local_path: C:/path/to/dir
+  sync_delay: 60
+  target_branch: main
+  watch_paths:
+  - C:/path1
+  - C:/path2

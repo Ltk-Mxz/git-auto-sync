@@ -1,0 +1,5 @@
+PyYAML
+watchdog
+GitPython
+PyGithub
+tk
