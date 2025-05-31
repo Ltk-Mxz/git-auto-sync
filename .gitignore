@@ -4,3 +4,4 @@ main.spec
 dist/
 __pycache__/
 sync.log
+info

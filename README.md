@@ -1,22 +1,22 @@
 # Git Auto Sync
 
-Ce projet permet de synchroniser automatiquement plusieurs dossiers locaux avec différents dépôts GitHub, en surveillant les changements en temps réel. Il propose une interface graphique (GUI) pour configurer facilement les cibles de synchronisation, ainsi qu'une interface en ligne de commande (CLI).
+This project automatically synchronizes multiple local folders with different GitHub repositories, monitoring changes in real time. It provides a graphical user interface (GUI) for easy configuration of sync targets, as well as a command-line interface (CLI).
 
-## Fonctionnalités
+## Features
 
-- Synchronisation automatique de plusieurs dossiers locaux vers différents dépôts GitHub.
-- Surveillance en temps réel des changements de fichiers (création, modification, suppression, déplacement).
-- Gestion de la dominance locale ou distante (`local_dominance`).
-- Interface graphique pour éditer la configuration et lancer la synchronisation.
-- Export facile en exécutable avec PyInstaller.
+- Automatic synchronization of multiple local folders to different GitHub repositories.
+- Real-time monitoring of file changes (creation, modification, deletion, move).
+- Local or remote dominance management (`local_dominance`).
+- Graphical interface to edit configuration and start synchronization.
+- Easy export to executable with PyInstaller.
 
-## Prérequis
+## Prerequisites
 
 - **Python 3.8+**
-- **Git** installé sur votre machine (et accessible dans le PATH)
-- Un token GitHub avec accès en écriture aux dépôts concernés.
+- **Git** installed on your machine (and accessible in the PATH)
+- A GitHub token with write access to the relevant repositories.
 
-## Installation des dépendances
+## Install dependencies
 
 ```bash
 pip install -r requirements.txt
@@ -24,18 +24,18 @@ pip install -r requirements.txt
 
 ## Configuration
 
-La configuration se fait dans le fichier :  
+Configuration is done in the file:  
 `config/sync_config.yml`
 
-Pour synchroniser plusieurs dossiers/repos, utilisez la clé `sync_targets` :
+To sync multiple folders/repos, use the `sync_targets` key:
 
 ```yaml
 sync_targets:
   - github_token: "ghp_xxx"
-    github_repo: "utilisateur1/repo1"
-    local_path: "C:/Utilisateurs/xxx/Documents/Projet1"
+    github_repo: "user1/repo1"
+    local_path: "C:/Users/xxx/Documents/Project1"
     watch_paths:
-      - "C:/Utilisateurs/xxx/Documents/Projet1"
+      - "C:/Users/xxx/Documents/Project1"
     sync_delay: 60
     force_sync: true
     create_new_branch: false
@@ -43,10 +43,10 @@ sync_targets:
     local_dominance: true
 
   - github_token: "ghp_yyy"
-    github_repo: "utilisateur2/repo2"
-    local_path: "D:/Travail/Projet2"
+    github_repo: "user2/repo2"
+    local_path: "D:/Work/Project2"
     watch_paths:
-      - "D:/Travail/Projet2"
+      - "D:/Work/Project2"
     sync_delay: 300
     force_sync: false
     create_new_branch: false
@@ -54,61 +54,61 @@ sync_targets:
     local_dominance: false
 ```
 
-Chaque bloc représente une cible indépendante.
+Each block represents an independent sync target.
 
-## Utilisation
+## Usage
 
-### Mode graphique (GUI)
+### Graphical mode (GUI)
 
-Pour éditer la configuration et lancer la synchronisation :
+To edit the configuration and start synchronization:
 
 ```bash
 python main.py --gui
 ```
 
-- Ajoutez/supprimez des cibles de synchronisation.
-- Enregistrez la configuration.
-- Lancez la synchronisation directement depuis la GUI (bouton "Lancer la synchronisation").
+- Add/remove sync targets.
+- Save the configuration.
+- Start synchronization directly from the GUI ("Start Sync" button).
 
-### Mode automatique (CLI)
+### Automatic mode (CLI)
 
-Pour lancer la synchronisation automatique (toutes les cibles du YAML) :
+To start automatic synchronization (all targets from YAML):
 
 ```bash
 python main.py
 ```
 
-## Exporter en exécutable
+## Export as executable
 
-Depuis la GUI, cliquez sur "Export as EXE (PyInstaller)"  
-Ou en ligne de commande :
+From the GUI, click "Export as EXE (PyInstaller)"  
+Or from the command line:
 
 ```bash
 pyinstaller --onefile --noconsole main.py
 ```
 
-## Dépendances principales
+## Main dependencies
 
 - [PyYAML](https://pyyaml.org/)
 - [watchdog](https://github.com/gorakhargosh/watchdog)
 - [GitPython](https://gitpython.readthedocs.io/)
 - [PyGithub](https://pygithub.readthedocs.io/)
-- [tkinter](https://docs.python.org/3/library/tkinter.html) (pour la GUI)
+- [tkinter](https://docs.python.org/3/library/tkinter.html) (for the GUI)
 
 ## Notes
 
-- Le programme crée un fichier `sync.log` pour le suivi des opérations.
-- Chaque cible de synchronisation fonctionne indépendamment.
-- Pour chaque dossier, le programme initialise un dépôt git si besoin, ou clone si le dossier est vide.
-- La configuration multi-cible est gérée via la clé `sync_targets` dans le YAML.
+- The program creates a `sync.log` file for operation tracking.
+- Each sync target works independently.
+- For each folder, the program initializes a git repo if needed, or clones if the folder is empty.
+- Multi-target configuration is managed via the `sync_targets` key in the YAML.
 
 ---
 
 ## Contribution
 
-Si vous souhaitez contribuer, n'hésitez pas à ouvrir des issues ou des pull requests. Toute contribution est la bienvenue !
+If you want to contribute, feel free to open issues or pull requests. All contributions are welcome!
 
-## Auteurs et licence
+## Authors and License
 
-**Auteur :** Ltk-Mxz  
-**Licence :** MIT
+**Author:** Ltk-Mxz  
+**License:** MIT
